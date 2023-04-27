@@ -1,22 +1,32 @@
-import React from "react";
-import { Router, Route} from "react-router-dom";
-import Home from "../pages/Home"
-import Login from "../pages/Login"
-import Register from "../pages/Register"
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   return (
-    <nav>
-         <Router>
-                <Route path="/home" component={Home} />
-                <Route path="/home" component={Login} />
-                <Route path="/home" component={Register} />
-    </Router>
-        {/* <Link to="/home" component={Home} />
-        <Link to="/login" component={Login} />
-        <Link to="/register" component={Register} /> */}
-   
-    </nav>
+    <header>
+      <div className="header-nav">
+        <header>
+          <nav className="nav">
+            <div> full app</div>
+
+            <ul className="nav-items">
+              <li>
+                <Link to={`/home`}>Home</Link>
+              </li>
+              <li>
+                <Link to={`/users`}>Users</Link>
+              </li>
+              <li>
+                <Link to={`/login`}>Login</Link>
+              </li>
+              <li>
+                <Link to={`/register`}>Register</Link>
+              </li>
+            </ul>
+          </nav>
+        </header>
+      </div>
+    </header>
   );
 }
 

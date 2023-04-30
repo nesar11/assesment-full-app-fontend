@@ -4,10 +4,10 @@ import { Outlet } from 'react-router-dom';
 
 function Layout() {
   return (
-    <main>
+    <React.Fragment>
       <Navbar />
       <Outlet />
-    </main>
+    </React.Fragment>
   );
 }
 

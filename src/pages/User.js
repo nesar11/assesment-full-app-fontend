@@ -43,7 +43,9 @@ function User() {
               <td>{item._id}</td>
               <td>{item.username}</td>
               <td>{item.email}</td>
-              <Moment format="YYYY/MM/DD hh:mm:ss">{data.createdAt}</Moment>
+              <td>
+                <Moment format="YYYY/MM/DD-hh:mm:ss">{data.createdAt}</Moment>
+              </td>
               <td>Edit</td>
               <td>Delete</td>
             </tr>

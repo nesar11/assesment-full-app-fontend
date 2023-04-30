@@ -1,43 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 function Login() {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const { email, password } = formData;
 
+  const onChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8000/users/login', {
-        email,
-        password,
-      });
-      localStorage.setItem('token', response.data.json_token);
-      window.location.href = '/users';
-    } catch (error) {
-      console.error(error);
+      const res = await axios.post(
+        'http://localhost:8000/users/login',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      localStorage.setItem('token', res.data);
+      window.location.href = '/home';
+      console.log(res.data);
+    } catch (err) {
+      console.log(err.response.data);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Email:
+    <form onSubmit={onSubmit}>
+      <div>
+        <label>Email:</label>
         <input
           type="email"
+          name="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={onChange}
+          required
         />
-      </label>
-      <label>
-        Password:
+      </div>
+      <div>
+        <label>Password:</label>
         <input
           type="password"
+          name="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={onChange}
+          required
         />
-      </label>
+      </div>
       <button type="submit">Login</button>
     </form>
   );

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './UpdateUser.css';
+import Moment from 'react-moment';
 
 function User() {
   const [data, setData] = useState([]);
@@ -64,7 +65,9 @@ function User() {
               <td>{item.email}</td>
               <td>{String(item.isAdmin)}</td>
               <td>{String(item.isActive)}</td>
-              <td>{item.createdAt}</td>
+              <td>
+                <Moment format="YYYY-MM-DD HH:mm">{data.createdAt}</Moment>
+              </td>
               <td>
                 <Link to={`/users/update/${item._id}`}>Edit</Link>
               </td>

@@ -3,32 +3,35 @@ import axios from 'axios';
 import './UpdateUser.css';
 import { Link } from 'react-router-dom';
 
+// new
 function Login() {
-  const [formData, setFormData] = useState({
+  const [values, setValues] = useState({
     email: '',
     password: '',
   });
 
-  const { email, password } = formData;
+  const { email, password } = values;
 
   const onChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const res = await axios.post(
         'http://localhost:8000/users/login',
-        formData,
+        values,
         {
           headers: {
             'Content-Type': 'application/json',
           },
         }
       );
+
       localStorage.setItem('token', res.data);
-      window.location.href = '/home';
+      window.location.href = '/users';
       console.log(res.data);
     } catch (err) {
       console.log(err.response.data);

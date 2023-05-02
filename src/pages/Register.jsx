@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 // import './UpdateUser.css';
 
 function Register() {
@@ -83,12 +84,19 @@ function Register() {
           type="password"
           placeholder="passwordConfirmation"
           name="passwordConfirmation"
+          massage="password is wong"
           value={passwordConfirmation}
           onChange={onChange}
         />
+
         <button className="updateButton" type="submit">
           Register
         </button>
+        <br />
+        <label>
+          {' '}
+          <Link to="/login"> login here</Link>
+        </label>
       </form>
     </div>
   );

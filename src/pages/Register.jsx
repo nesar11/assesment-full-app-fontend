@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+// import './UpdateUser.css';
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -44,37 +45,52 @@ function Register() {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <input
-        type="text"
-        placeholder="username"
-        name="username"
-        value={username}
-        onChange={onChange}
-      />
-      <input
-        type="email"
-        placeholder="Email Address"
-        name="email"
-        value={email}
-        onChange={onChange}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        name="password"
-        value={password}
-        onChange={onChange}
-      />
-      <input
-        type="password"
-        placeholder="passwordConfirmation"
-        name="passwordConfirmation"
-        value={passwordConfirmation}
-        onChange={onChange}
-      />
-      <button type="submit">Register</button>
-    </form>
+    <div className="form-container">
+      <form onSubmit={onSubmit}>
+        <h2>Register form</h2>
+        <label>
+          User Name:
+          <br />
+          <input
+            type="text"
+            placeholder="username"
+            name="username"
+            value={username}
+            onChange={onChange}
+          />
+        </label>
+        <label>
+          Email:
+          <br />
+          <input
+            type="email"
+            placeholder="Email Address"
+            name="email"
+            value={email}
+            onChange={onChange}
+          />
+        </label>
+        <label>Password</label>
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          value={password}
+          onChange={onChange}
+        />
+        <label>Password Confirmed</label>
+        <input
+          type="password"
+          placeholder="passwordConfirmation"
+          name="passwordConfirmation"
+          value={passwordConfirmation}
+          onChange={onChange}
+        />
+        <button className="updateButton" type="submit">
+          Register
+        </button>
+      </form>
+    </div>
   );
 }
 

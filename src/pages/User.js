@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './UpdateUser.css';
 
 function User() {
   const [data, setData] = useState([]);
   const token = localStorage.getItem('token');
-  const [updateState, setUpdateState] = useState(-1);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,13 +34,14 @@ function User() {
     }).then((result) => {
       result.json().then((respone) => {
         console.warn(respone);
+        window.location.href = '/users';
       });
     });
   }
 
   return (
     <div className="table-container">
-      <h1> User list</h1>
+      <h2> User list</h2>
 
       <table>
         <thead>
@@ -48,6 +49,9 @@ function User() {
             <th>ID</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Updated</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
@@ -58,10 +62,18 @@ function User() {
               <td>{item._id}</td>
               <td>{item.username}</td>
               <td>{item.email}</td>
+              <td>{String(item.isAdmin)}</td>
+              <td>{String(item.isActive)}</td>
+              <td>{item.createdAt}</td>
               <td>
                 <Link to={`/users/update/${item._id}`}>Edit</Link>
               </td>
-              <td onClick={() => deleteUser(item._id)}>Delete</td>
+              <td
+                className="delelePointer"
+                onClick={() => deleteUser(item._id)}
+              >
+                Delete
+              </td>
             </tr>
           ))}
         </tbody>

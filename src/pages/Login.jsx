@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './UpdateUser.css';
+import { Link } from 'react-router-dom';
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -34,29 +36,45 @@ function Login() {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <div>
-        <label>Email:</label>
-        <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={onChange}
-          required
-        />
-      </div>
-      <div>
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={onChange}
-          required
-        />
-      </div>
-      <button type="submit">Login</button>
-    </form>
+    <div className="form-container">
+      <form onSubmit={onSubmit}>
+        <div>
+          {' '}
+          <h2>Login </h2>
+          <label>
+            Email:
+            <br />
+          </label>
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={onChange}
+            required
+          />
+        </div>
+        <div>
+          <label>
+            Password: <br />
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={onChange}
+              required
+            />
+          </label>
+        </div>
+        <button className="updateButton" type="submit">
+          Login
+        </button>
+        <br />
+        <label>
+          {' '}
+          <Link to="/register">Create new Account</Link>
+        </label>
+      </form>
+    </div>
   );
 }
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import './UpdateUser.css';
 
 function UpdateUser() {
   const { id } = useParams();
@@ -8,6 +9,7 @@ function UpdateUser() {
     id: id,
     username: '',
     email: '',
+    isAdmin: '',
   });
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -22,6 +24,7 @@ function UpdateUser() {
           ...values,
           username: res.data.username,
           email: res.data.email,
+          isAdmin: res.data.isAdmin,
         });
       })
       .catch((err) => console.log(err));
@@ -43,11 +46,11 @@ function UpdateUser() {
   };
 
   return (
-    <div>
+    <div className="form-container">
       <h2>User Update</h2>
       <form onSubmit={handleSubmit}>
         <label>
-          Name:
+          Name: <br />
           <input
             type="text"
             name="username"
@@ -56,16 +59,34 @@ function UpdateUser() {
             onChange={(e) => setValues({ ...values, username: e.target.value })}
           />
         </label>
+        <br />
         <label>
           Email:
+          <br />
           <input
-            type="email"
+            type="text"
             name="email"
+            placeholder="email"
             value={values.email}
             onChange={(e) => setValues({ ...values, email: e.target.value })}
           />
         </label>
-        <button type="submit">Update</button>
+        <br />
+        <label>
+          Role:
+          <br />
+          <input
+            type="text"
+            name="isAdmin"
+            placeholder="isAdmin"
+            value={values.isAdmin}
+            onChange={(e) => setValues({ ...values, isAdmin: e.target.value })}
+          />
+        </label>
+
+        <button className="updateButton" type="submit">
+          Update
+        </button>
       </form>
     </div>
   );

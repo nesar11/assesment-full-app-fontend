@@ -10,12 +10,14 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import Layout from './components/Layout';
+import UpdateUser from './pages/UpdateUser';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route path="home" element={<Home />} />
       <Route path="Users" element={<User />} />
+      <Route path="Users/update/:id" element={<UpdateUser />} />
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Register />} />
     </Route>

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 function User() {
   const [data, setData] = useState([]);
-  const [status, setStatus] = useState(null);
   const token = localStorage.getItem('token');
+  const [updateState, setUpdateState] = useState(-1);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,9 +58,10 @@ function User() {
               <td>{item._id}</td>
               <td>{item.username}</td>
               <td>{item.email}</td>
-              <td>Edit</td>
+              <td>
+                <Link to={`/users/update/${item._id}`}>Edit</Link>
+              </td>
               <td onClick={() => deleteUser(item._id)}>Delete</td>
-              {status && <p>Status: {status}</p>}
             </tr>
           ))}
         </tbody>

@@ -7,12 +7,13 @@ import Moment from 'react-moment';
 function User() {
   const [data, setData] = useState([]);
   const token = localStorage.getItem('token');
+  const APIURl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchData = async () => {
       localStorage.getItem('token'); // get token from localStorage
       try {
-        const response = await axios.get('http://localhost:8000/users/', {
+        const response = await axios.get(`${APIURl}users`, {
           headers: {
             Authorization: `Bearer ${token}`, // set token in header
           },
@@ -27,7 +28,7 @@ function User() {
   }, []);
 
   function deleteUser(id) {
-    fetch(`http://localhost:8000/users/${id}`, {
+    fetch(`${APIURl}users/${id}`, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${token}`,

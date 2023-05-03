@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-// import './UpdateUser.css';
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -31,13 +30,9 @@ function Register() {
       password,
       passwordConfirmation,
     });
-
+    const APIURL = process.env.REACT_APP_API_URL;
     try {
-      const res = await axios.post(
-        'http://localhost:8000/users/register',
-        body,
-        config
-      );
+      const res = await axios.post(`${APIURL}users/register`, body, config);
       console.log(res.data);
       window.location.href = '/login';
     } catch (err) {

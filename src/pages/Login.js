@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './UpdateUser.css';
 import { Link } from 'react-router-dom';
+const APIURL = process.env.REACT_APP_API_URL;
 
 // new
 function Login() {
@@ -20,15 +21,11 @@ function Login() {
     e.preventDefault();
 
     try {
-      const res = await axios.post(
-        'http://localhost:8000/users/login',
-        values,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      const res = await axios.post(`${APIURL}users/login`, values, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
       localStorage.setItem('token', res.data);
       window.location.href = '/users';

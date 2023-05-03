@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Moment from 'react-moment';
 import './Post.css';
 
 function Search() {
   const [searchQuery, setSearchQuery] = useState('');
   const [data, setData] = useState([]);
+  const APIURL = process.env.REACT_APP_API_URL;
 
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get(
-        `http://localhost:8000/posts/search/${searchQuery}`
-      );
-      console.log(response.data);
+      const response = await axios.get(`${APIURL}posts/search/${searchQuery}`);
+      console.log(response);
       setData(response.data);
     } catch (error) {
       console.error(error);
@@ -45,7 +45,13 @@ function Search() {
                   />
                   <h4> {result.title}</h4>
                   <p> {result.description}</p>
-                  <p> Created at: {result.createdAt}</p>
+                  <p>
+                    {' '}
+                    Created at:{' '}
+                    <Moment format="YYYY-MM-DD HH:mm A">
+                      {result.createdAt}
+                    </Moment>
+                  </p>
                 </div>
               </div>
             </div>

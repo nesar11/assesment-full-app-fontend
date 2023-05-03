@@ -38,3 +38,8 @@ code {
   font-size: 12px;
   color: green;
 }
+
+.post-secion {
+  float: left;
+  align-content: center;
+}

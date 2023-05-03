@@ -12,7 +12,7 @@ function PostList(props) {
               <div key={post.id}>
                 <h4> {post.title}</h4>
                 <p> {post.description}</p>
-                <p> {post.createdAt}</p>
+                <p> Created at: {post.createdAt}</p>
               </div>
             </div>
           </div>

@@ -66,7 +66,7 @@ function User() {
               <td>{String(item.isAdmin)}</td>
               <td>{String(item.isActive)}</td>
               <td>
-                <Moment format="YYYY-MM-DD HH:mm">{data.createdAt}</Moment>
+                <Moment format="YYYY-MM-DD HH:mm A">{item.createdAt}</Moment>
               </td>
               <td>
                 <Link to={`/users/update/${item._id}`}>Edit</Link>

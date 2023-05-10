@@ -6,7 +6,7 @@ const Post = () => {
 
   useEffect(() => {
     console.log(process.env);
-    fetch(`${APIURL}posts`)
+    fetch(`${APIURL}api/posts`)
       .then((response) => response.json())
       .then((data) => setPosts(data));
   }, []);

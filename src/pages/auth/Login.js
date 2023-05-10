@@ -21,15 +21,14 @@ function Login() {
     e.preventDefault();
 
     try {
-      const res = await axios.post(`${APIURL}users/login`, values, {
+      const res = await axios.post(`${APIURL}api/users/login`, values, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
-
       localStorage.setItem('token', res.data);
+
       window.location.href = '/users';
-      console.log(res.data);
     } catch (err) {
       console.log(err.response.data);
     }

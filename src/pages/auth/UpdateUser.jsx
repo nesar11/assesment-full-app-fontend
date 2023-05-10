@@ -14,7 +14,7 @@ function UpdateUser() {
   useEffect(() => {
     const token = localStorage.getItem('token');
     axios
-      .get('http://localhost:8000/users/view/' + id, {
+      .get('http://localhost:8000/api/users/view/' + id, {
         headers: {
           Authorization: `Bearer ${token}`, // set token in header
         },
@@ -34,7 +34,7 @@ function UpdateUser() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put('http://localhost:8000/users/update/' + id, values, {
+      .put('http://localhost:8000/api/users/update/' + id, values, {
         headers: {
           Authorization: `Bearer ${token}`, // set token in header
         },

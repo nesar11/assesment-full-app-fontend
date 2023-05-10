@@ -3,7 +3,7 @@ select {
   width: 450px;
   padding: 14px 20px;
   margin: 8px 0;
-  border: 1px solid #ccc;
+  border: 1px solid #031c76;
   border-radius: 4px;
   box-sizing: border-box;
 }
@@ -67,4 +67,9 @@ td {
 .delelePointer {
   cursor: pointer;
   color: rgb(229, 7, 44);
+}
+
+.error {
+  color: red;
+  font-weight: bold;
 }
